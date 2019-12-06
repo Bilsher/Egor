@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+cout << "Midle number, of sum number's : \n";
+	const int N = 30;
+	int arr[N];
+	for (int i = 0; i < N; i++) arr[i] = rand() % 1001;
+	double sum = 0; int b = 0;
+	for (int i = 0; i < N; i++) {
+		if (arr[i] % 2 != 0) {
+			b++;
+			sum += arr[i];
+		}
+	}
+	sum /= b;
+	cout << sum;
+
+}
