@@ -1,0 +1,60 @@
+#include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
+//7. Латинский квадрат. 8б.
+//Латинским квадратом порядка n называется квадратная таблица n*n,каждая строка и каждый столбец которой
+//содержат все числа от 1 до n. Проверить, является ли заданная целочисленная таблица латинским квадратом.
+
+int main()
+{
+    int N;
+    cout<<"vvedite znacnhenie massiva ";
+    cin>>N;
+    int Matrix[N][N];
+
+    for(int i(0);i<N;i++)
+        for (int j(0);j<N;j++)
+        {
+            cout<<"Vvedite element ["<<i+1<<", "<<j+1<<"]:  ";
+            cin >>Matrix[i][j];
+        }
+
+    cout<<endl<<"_______________________"<<endl;
+
+       for(int i(0);i<N;i++)
+    {
+        for (int j(0);j<N;j++)
+            cout<< "|"<<Matrix[i][j]<<"|\t";
+        cout<<endl;
+    }
+
+
+    bool result = false;
+    for (int i = 0; i < N && !result; i++)
+        for (int j = 0; j < N && !result; j++)
+        {
+            int count = 0;
+            for (int n = 0; n < N; n++)
+                if (Matrix[n][j] == Matrix[i][j] && n != i)
+                    count++;
+
+            if (count > 0)
+            {
+                result = true;
+                continue;
+            }
+
+            count = 0;
+            for (int k = 0; k < N; k++)
+                if (Matrix[i][k] == Matrix[i][j] && k != j)
+                    count++;
+
+            if (count > 0) result = true;
+        }
+
+    cout<<"Latinski Quadrat?: "<<(result == false) ? "YES" : "NO";
+
+    return 0;
+}
